@@ -1,5 +1,6 @@
 package com.example;
 
+import com.google.gson.Gson;
 import org.apache.log4j.Logger;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,7 @@ public class ExampleController {
 
     private static final Logger log = Logger.getLogger(ExampleController.class);
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     @Cacheable("calculateResult")
     public String calculateResult() {
@@ -20,7 +21,12 @@ public class ExampleController {
         // perform computationally expensive calculation
         simulateSlowService();
 
-        return "result";
+        Books b = new Books();
+
+        Gson gson = new Gson();
+        String json = gson.toJson(b);
+
+        return json;
     }
 
     // Don't do this at home
