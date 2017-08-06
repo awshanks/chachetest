@@ -1,2 +1,5 @@
 .idea
 build
+cachetest.iml
+out
+.gradle
