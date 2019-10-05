@@ -1,7 +1,5 @@
 package com.example;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 /**
  * Created by awshanks on 12/08/16.
  */
